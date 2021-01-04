@@ -2,7 +2,13 @@ import React, { Component, createContext } from 'react';
 
 const globalState = {
     city: "",
+    country: "",
     result: "",
+    temperatureSeason: "",
+    Rtemperature: 0,
+    FTemperature: 0,
+    Humidity: 0,
+    Pressure: 0,
     chatbot: false
 };
 
@@ -16,8 +22,20 @@ const mainStateReducer= (state, action) => {
             return {...state, city: action.payload.city}
         case 'SET_STATE':
             return {...state, result: action.payload.result}
+        case 'SET_COUNTRY':
+            return {...state, contry: action.payload.country}
+        case 'TEMPERATRUE_SEASON':
+            return {...state, temperatureSeason: action.payload.country}
+        case 'R_TEMPERATURE':
+            return {...state, Rtemperature: action.payload.Rtemperature}
+        case 'L_TEMPERATURE':
+            return {...state, Ltemperature: action.payload.Ltemperature}
+        case 'Humidity':
+            return {...state, Humidity: action.payload.Humidity}
+        case 'Pressure':
+            return {...state, Pressure: action.payload.Pressure}
         default: 
-             return state
+            return state
     }
 }
 
