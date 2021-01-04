@@ -8,59 +8,168 @@ import "../css/form.css";
 const Form = () => {
   let { state: globalState, dispatch } = useContext(main);
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    const city = globalState.city;
 
-    const data = await axios.get(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c41d6eca7b601b2cc4a19fbac586dc5e`
-    );
-    const data4days = await axios.get(
-      `http://api.weatherapi.com/v1/forecast.json?key=139f916626ab43b9a1d44405210401&q=${city}&days=7`
-    );
-    dispatch({ type: "Forecast", payload: { Forecast: data4days } });
-    dispatch({
-      type: "SET_STATE",
-      payload: { result: data.data.weather[0].description },
-    });
-    dispatch({
-      type: "SET_COUNTRY",
-      payload: { country: data.data.sys.country },
-    });
-    dispatch({
-      type: "TEMPERATRUE_SEASON",
-      payload: { temperatureSeason: data.data.weather[0].main },
-    });
-    dispatch({
-      type: "R_TEMPERATURE",
-      payload: { Rtemperature: data.data.main.temp },
-    });
-    dispatch({
-      type: "L_TEMPERATURE",
-      payload: { Ltemperature: data.data.main.feels_like },
-    });
-    dispatch({
-      type: "Humidity",
-      payload: { Humidity: data.data.main.humidity },
-    });
-    dispatch({
-      type: "Pressure",
-      payload: { Pressure: data.data.main.pressure },
-    });
+
+  let [keyword, setKeyword] = useState("")
+
+  let [cities, setCities] = useState([])
+
+  let [loading, setLoading] = useState(false)
+  let [error, setError] = useState(false)
+
+
+
+
+
+  let [fields, setFields] = useState({
+      username: "",
+      password: "",
+      email: "",
+      name: "",
+      phone: "",
+      age: 0,
+  })
+
+
+
+  const onFieldChange = (e) => {
+
+    let {id, value} = e.target
+
+    let fieldsCopy = {...fields}
+
+    fieldsCopy[id] = value
+
+  }
+
+
+
+
+
+
+
+
+
+  const handleSearch = async (name, url) => {
+
+
+
+    const city = name
+
+
+    try {
+
+
+      setLoading(true)
+
+      const data = await axios.get(
+        `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c41d6eca7b601b2cc4a19fbac586dc5e`
+      );
+      const data4days = await axios.get(
+        `http://api.weatherapi.com/v1/forecast.json?key=139f916626ab43b9a1d44405210401&q=${city}&days=7`
+      );
+  
+      dispatch({ type: "Forecast", payload: { Forecast: data4days } });
+  
+  
+      dispatch({
+        type: "SET_STATE",
+        payload: { result: data.data.weather[0].description },
+      });
+  
+      dispatch({
+        type: "SET_COUNTRY",
+        payload: { country: data.data.sys.country },
+      });
+  
+      dispatch({
+        type: "TEMPERATRUE_SEASON",
+        payload: { temperatureSeason: data.data.weather[0].main },
+      });
+  
+      dispatch({
+        type: "R_TEMPERATURE",
+        payload: { Rtemperature: data.data.main.temp },
+      });
+  
+      dispatch({
+        type: "L_TEMPERATURE",
+        payload: { Ltemperature: data.data.main.feels_like },
+      });
+  
+      dispatch({
+        type: "Humidity",
+        payload: { Humidity: data.data.main.humidity },
+      });
+  
+      dispatch({
+        type: "Pressure",
+        payload: { Pressure: data.data.main.pressure },
+      });
+
+    } catch(err) {
+
+      setLoading(false)
+      setError(true)
+      
+
+    } finally {
+      setLoading(false)
+    }
+
+  }
+
+    
+
+  const onCitySelect = (name, url) => {
+        setKeyword(name)
+        handleSearch(name, url)
+        setCities([])
+
+  }
+
+
+
+  let renderCities = cities.map(({id, name, region, url}) => {
+    return <CityOption key={id} id={id} url={url} onCitySelect={onCitySelect} name={name} region={region}/>
+  })
+
+  const handleChange = async (e) => {
+
+
+    setKeyword(e.target.value)
+
+    if (e.target.value.length == 0) return
+
+
+    const apiKey = "139f916626ab43b9a1d44405210401"
+
+    try {
+
+      let {data} = await axios.get(`http://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${e.target.value}`)
+
+      setCities(data)
+
+    } catch(err) {
+      console.log(err.message)
+    }
+
+    //api call
+
+    // dispatch({ type: "CHANGE_CITY", payload: { city: e.currentTarget.value } });
   };
 
-  const handleChange = (e) => {
-    dispatch({ type: "CHANGE_CITY", payload: { city: e.currentTarget.value } });
-  };
+
+
 
   return (
     <React.Fragment>
       <div className="flex_left">
-        <form onSubmit={handleSearch}>
+        <form onSubmit={() => {}}>
           <div className="form-group">
             <label htmlFor="cityname">Write the name of your city here:</label>
             <input
-              value={globalState.city}
+              value={keyword}
               id="cityname"
               type="text"
               name="city"
@@ -70,10 +179,22 @@ const Form = () => {
           </div>
           <button className="btn btn-primary">Search</button>
         </form>
+        {renderCities}
         <span>{globalState.result}</span>
       </div>
     </React.Fragment>
   );
 };
+
+
+
+const CityOption = ({name, id, url, region, onCitySelect}) => {
+
+  return <div onClick={() => onCitySelect(name, url)}>
+      <h1>{name}</h1>
+      {region}
+  </div>
+
+}
 
 export default Form;
