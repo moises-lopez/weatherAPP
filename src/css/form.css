@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap');
+
+
+.flex_parent {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex_left {
+    flex: 1;
+    margin: 1.5rem;
+}
+
+.flex_right {
+    flex: 5;
+    margin: 1.5rem;
+}
+
+.display_flex_parent {
+    display: flex;
+    
+}
+
+.display_flex_left {
+    flex: none;
+}
+
+.display_flex_right {
+    flex: none;
+    position: relative;
+    left: 60rem;
+}
+
+.weather_Font {
+    font-family: 'Josefin Sans', cursive;
+}
+
+.big_font {
+    font-size: 5rem;
+}
+
+.medium_font {
+    font-size: 1.5rem;
+}
+
+.small_font{
+    font-size: 1.2rem;
+}
+
+.grey_font {
+    color: grey;
+    font-size: 1rem;
+}
