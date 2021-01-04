@@ -17,7 +17,7 @@ const mainStateReducer= (state, action) => {
         case 'SET_STATE':
             return {...state, result: action.payload.result}
         default: 
-            return state
+             return state
     }
 }
 
