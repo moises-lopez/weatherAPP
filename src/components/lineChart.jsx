@@ -22,6 +22,7 @@ export default class Chart extends PureComponent {
       counter++;
     });
     console.log(dataArr);
+    console.log("empalmado")
     return (
       <AreaChart
         width={300}
