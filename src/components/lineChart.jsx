@@ -11,7 +11,7 @@ import {
 export default class Chart extends PureComponent {
   render() {
     console.log(this.props);
-    const data = this.props.data;
+    const {data: data, big: big} = this.props;
     var dataArr = [];
     let counter = 0;
     data.map((hourData) => {
@@ -22,11 +22,17 @@ export default class Chart extends PureComponent {
       counter++;
     });
     console.log(dataArr);
-    console.log("empalmado")
+    console.log(big, "big")
+
+    const smallW = 300
+    const smallH = 100
+    const bigW = 900
+    const bigH = 300
+
     return (
       <AreaChart
-        width={300}
-        height={100}
+        width={big ? bigW : smallW}
+        height={big ? bigH: smallH}
         data={dataArr}
         margin={{
           top: 10,

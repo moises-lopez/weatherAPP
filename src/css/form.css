@@ -9,7 +9,7 @@
 
 .flex_left {
   flex: 1;
-  margin: 1.5rem;
+  margin: 1.2rem;
 }
 
 .flex_right {
@@ -105,4 +105,9 @@
 .no-margin {
   margin: 0;
   padding: 0;
+}
+
+.bodyW {
+  background: linear-gradient(135deg, #9093cb, #2ed3d0);
+  color: white
 }

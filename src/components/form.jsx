@@ -95,6 +95,10 @@ const Form = () => {
   const onCitySelect = (name, url) => {
     setKeyword(name);
     handleSearch(name, url);
+    dispatch({
+        type: "CHANGE_CITY",
+        payload: { city: keyword },
+      });
     setCities([]);
   };
 
@@ -136,7 +140,7 @@ const Form = () => {
   return (
     <React.Fragment>
       <div className="test">
-        <form className="search" autocomplete="off" onSubmit={() => {}}>
+        <form className="search" autocomplete="off">
           <div className="form-group">
             <label htmlFor="cityname">Write the name of your city here:</label>
             <input

@@ -1,7 +1,7 @@
 import React, { Component, useContext, useEffect, useState } from "react";
 import { main } from "../state/mainState";
 import Chart from "./lineChart";
-import bigForecast from './bigForecast'
+import BigForecast from './bigForecast'
 
 import "../css/forecast.css";
 const CardsForecast = () => {
@@ -18,13 +18,16 @@ const CardsForecast = () => {
   let forecastArray = forecastData.data.forecast.forecastday;
 
   //render cards
-  // let mainCard = forecastArray.shift()
+  let mainCard = forecastArray[0]
+  forecastArray = forecastArray.filter( (el, index) => (
+   index != 0
+   ))
 
   let cards = forecastArray.map((day) => (
     <article id={day.date} className="card mycard padding ">
       <p>{day.date}</p>
       {console.log("map")}
-      <img className="photo" src={day.day.condition.icon}></img>
+      <img className="photo" src={day.day.condition.icon}/>
       <p>Promedio Temp : {day.day.avgtemp_c}</p>
       <Chart data={day.hour} />
     </article>
@@ -32,9 +35,9 @@ const CardsForecast = () => {
   console.log(cards, cards.length)
   return (
     <div>
-      {/* <bigForecast
+      <BigForecast
         forecastValues={mainCard}
-      /> */}
+      />
       <section className="cards">{cards}</section>
     </div>
   );
