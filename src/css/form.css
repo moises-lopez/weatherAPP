@@ -111,10 +111,9 @@
 .bodyW {
   background: linear-gradient(135deg, #9093cb, #2ed3d0);
   color: white;
-  min-height: 100vh;
+  min-height: 120vh;
 }
 
 .hover {
   background-color: rgba(50, 115, 220, 0.3);
 }
-
