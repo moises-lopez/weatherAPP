@@ -135,9 +135,9 @@ const Form = () => {
 
   return (
     <React.Fragment>
-      <div className="test">
+      <div className="test ">
         <form className="search" autocomplete="off" onSubmit={() => {}}>
-          <div className="form-group">
+          <div className="form-group dropdown">
             <label htmlFor="cityname">Write the name of your city here:</label>
             <input
               value={keyword}
@@ -148,7 +148,7 @@ const Form = () => {
               className="form-control"
               onChange={handleChange}
             />
-            <div className="centered">
+            <div className="centered dropdown-content">
               <div>{renderCities}</div>
             </div>
           </div>
