@@ -10,7 +10,7 @@ const Display = () => {
 
   return (
     <React.Fragment>
-      <div className="flex_right weather_Font">
+      {/* <div className="flex_right weather_Font">
         <div className="display_flex_parent">
           <div className="display_flex_left">
             <p className="big_font">{globalState.Rtemperature}°K</p>
@@ -25,7 +25,7 @@ const Display = () => {
             <p>{globalState.result}</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 };

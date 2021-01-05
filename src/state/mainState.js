@@ -10,6 +10,7 @@ const globalState = {
   Humidity: 0,
   Pressure: 0,
   forecast: {},
+  loading: false,
   chatbot: false,
 };
 
@@ -37,6 +38,8 @@ const mainStateReducer = (state, action) => {
       return { ...state, Pressure: action.payload.Pressure };
     case "Forecast":
       return { ...state, forecast: action.payload.Forecast };
+    case "Loading":
+      return { ...state, loading: action.payload.loading };
     default:
       return state;
   }

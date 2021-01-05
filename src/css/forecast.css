@@ -1,4 +1,25 @@
 .cards {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+.mycard {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0),
+    rgb(5, 228, 217)
+  );
+}
+
+.padding {
+  padding: 10px;
+}
+
+.photo {
+  height: 100px;
+  width: 100px;
+}
+
+.setAbsolute {
+  position: absolute;
 }

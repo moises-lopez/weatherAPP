@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap");
-
+* {
+  margin: 0;
+}
 .flex_parent {
   display: flex;
   flex-direction: row;
@@ -48,4 +50,59 @@
 .grey_font {
   color: grey;
   font-size: 1rem;
+}
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+}
+
+.test {
+  display: flex;
+  justify-content: center;
+  bottom: 0%;
+  margin: 0;
+}
+.search {
+  width: 500px;
+  margin: 0;
+}
+.centered {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  top: 0%;
+  bottom: 0%;
+  margin: 0;
+}
+
+.autocomplete-items {
+  /* position: absolute;
+
+  z-index: 99;
+
+  
+  right: 0; */
+  width: 350px;
+  color: red;
+  border: 1px solid #d4d4d4;
+}
+.flex-column {
+  bottom: 0%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.autocomplete-text {
+  float: left;
+}
+
+.no-margin {
+  margin: 0;
+  padding: 0;
 }
