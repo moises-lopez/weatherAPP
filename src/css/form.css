@@ -6,7 +6,7 @@
 
 .flex_left {
   flex: 1;
-  margin: 1.5rem;
+  margin: 1.2rem;
 }
 
 .flex_right {
@@ -60,6 +60,8 @@
 .test {
   display: flex;
   justify-content: center;
+  bottom: 0%;
+  margin-top: 3rem;
 }
 
 .dropdown {
@@ -106,6 +108,13 @@
   padding: 0;
 }
 
+.bodyW {
+  background: linear-gradient(135deg, #9093cb, #2ed3d0);
+  color: white;
+  min-height: 100vh;
+}
+
 .hover {
   background-color: rgba(50, 115, 220, 0.3);
 }
+

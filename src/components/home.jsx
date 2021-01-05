@@ -8,7 +8,7 @@ import CardsForecast from "./forecast";
 const Home = () => {
   return (
     <React.Fragment>
-      <Form />
+      <Form className="bodyW" />
       <Display />
       <CardsForecast />
     </React.Fragment>
