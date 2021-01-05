@@ -76,15 +76,10 @@
 }
 
 .autocomplete-items {
-  /* position: absolute;
-
-  z-index: 99;
-
-  
-  right: 0; */
   width: 350px;
-  color: red;
+  color: rgb(1, 2, 61);
   border: 1px solid #d4d4d4;
+  padding-bottom: 0%;
 }
 
 .dropdown-content {
@@ -109,4 +104,8 @@
 .no-margin {
   margin: 0;
   padding: 0;
+}
+
+.hover {
+  background-color: rgba(50, 115, 220, 0.3);
 }

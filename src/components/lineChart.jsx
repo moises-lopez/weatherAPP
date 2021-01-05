@@ -10,7 +10,6 @@ import {
 
 export default class Chart extends PureComponent {
   render() {
-    console.log(this.props);
     const data = this.props.data;
     var dataArr = [];
     let counter = 0;
@@ -21,7 +20,6 @@ export default class Chart extends PureComponent {
       });
       counter++;
     });
-    console.log(dataArr);
     return (
       <AreaChart
         width={300}
