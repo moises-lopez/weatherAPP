@@ -10,8 +10,10 @@ import {
 
 export default class Chart extends PureComponent {
   render() {
+
     console.log(this.props);
     const {data: data, big: big} = this.props;
+
     var dataArr = [];
     let counter = 0;
     data.map((hourData) => {
@@ -21,6 +23,7 @@ export default class Chart extends PureComponent {
       });
       counter++;
     });
+
     console.log(dataArr);
     console.log(big, "big")
 

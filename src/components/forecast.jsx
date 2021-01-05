@@ -6,11 +6,15 @@ import BigForecast from './bigForecast'
 import "../css/forecast.css";
 const CardsForecast = () => {
   let { state: globalState, dispatch } = useContext(main);
-  
+
   let forecastData = globalState.forecast;
 
   if (globalState.loading === true) {
-    return <div>LOADING</div>;
+    return (
+      <div className="centered">
+        <div className="loader"></div>
+      </div>
+    );
   }
   if (!forecastData["data"]) return null;
 
@@ -24,7 +28,7 @@ const CardsForecast = () => {
    ))
 
   let cards = forecastArray.map((day) => (
-    <article id={day.date} className="card mycard padding ">
+    <article id={day.date} key={day.date} className="card mycard padding ">
       <p>{day.date}</p>
       {console.log("map")}
       <img className="photo" src={day.day.condition.icon}/>

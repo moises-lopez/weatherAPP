@@ -139,20 +139,30 @@ const Form = () => {
 
   return (
     <React.Fragment>
+
       <div className="test">
         <form className="search" autocomplete="off">
           <div className="form-group">
+
+      <div className="test ">
+        <form
+          className="search"
+          autoComplete={"" + Math.random()}
+          onSubmit={() => {}}
+        >
+          <div className="form-group dropdown">
+
             <label htmlFor="cityname">Write the name of your city here:</label>
             <input
               value={keyword}
               id="cityname"
               type="text"
-              autocomplete="ÑÖcompletes"
+              autoComplete={"" + Math.random()}
               name="city"
               className="form-control"
               onChange={handleChange}
             />
-            <div className="centered">
+            <div className="centered dropdown-content">
               <div>{renderCities}</div>
             </div>
           </div>
@@ -167,9 +177,7 @@ const CityOption = ({ name, id, url, region, onCitySelect }) => {
 
   return (
     <div
-      className={`autocomplete-items flex-column ${
-        isHovering ? "bg-light" : ""
-      }`}
+      className={`autocomplete-items flex-column ${isHovering ? "hover" : ""}`}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
       onClick={() => onCitySelect(name, url)}

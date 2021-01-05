@@ -1,7 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap");
-* {
-  margin: 0;
-}
 .flex_parent {
   display: flex;
   flex-direction: row;
@@ -66,30 +63,34 @@
   bottom: 0%;
   margin-top: 3rem;
 }
+
+.dropdown {
+  position: relative;
+}
+
 .search {
   width: 500px;
-  margin: 0;
 }
 .centered {
   display: flex;
   align-items: center;
   flex-direction: column;
-  top: 0%;
-  bottom: 0%;
-  margin: 0;
 }
 
 .autocomplete-items {
-  /* position: absolute;
-
-  z-index: 99;
-
-  
-  right: 0; */
   width: 350px;
-  color: red;
+  color: rgb(1, 2, 61);
   border: 1px solid #d4d4d4;
+  padding-bottom: 0%;
 }
+
+.dropdown-content {
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
 .flex-column {
   bottom: 0%;
   margin: 0;
@@ -112,3 +113,8 @@
   color: white;
   min-height: 100vh;
 }
+
+.hover {
+  background-color: rgba(50, 115, 220, 0.3);
+}
+
