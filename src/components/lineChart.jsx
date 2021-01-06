@@ -6,13 +6,13 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  ResponsiveContainer,
 } from "recharts";
 
 export default class Chart extends PureComponent {
   render() {
-
     console.log(this.props);
-    const {data: data, big: big} = this.props;
+    const { data: data, big: big } = this.props;
 
     var dataArr = [];
     let counter = 0;
@@ -25,36 +25,42 @@ export default class Chart extends PureComponent {
     });
 
     console.log(dataArr);
-    console.log(big, "big")
+    console.log(big, "big");
 
-    const smallW = 300
-    const smallH = 100
-    const bigW = 900
-    const bigH = 300
+    const smallW = 300;
+    const smallH = 100;
+    const bigW = 550;
+    const bigH = 200;
 
     return (
-      <AreaChart
+      <ResponsiveContainer
         width={big ? bigW : smallW}
-        height={big ? bigH: smallH}
-        data={dataArr}
-        margin={{
-          top: 10,
-          right: 30,
-          left: 0,
-          bottom: 0,
-        }}
+        height={big ? bigH : smallH}
+        aspect={3}
       >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="hour" />
-        <YAxis />
-        <Tooltip />
-        <Area
-          type="monotone"
-          dataKey="ammount"
-          stroke="#8884d8"
-          fill="#8884d8"
-        />
-      </AreaChart>
+        <AreaChart
+          width={big ? bigW : smallW}
+          height={big ? bigH : smallH}
+          data={dataArr}
+          margin={{
+            top: 10,
+            right: 30,
+            left: 0,
+            bottom: 0,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="hour" />
+          <YAxis />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey="ammount"
+            stroke="#8884d8"
+            fill="#8884d8"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
     );
   }
 }

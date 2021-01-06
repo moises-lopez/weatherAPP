@@ -143,7 +143,7 @@ const Form = () => {
               value={keyword}
               id="cityname"
               type="text"
-              autoComplete="ÑÖcompletes"
+              autoComplete="new-password"
               name="city"
               className="form-control"
               onChange={handleChange}
@@ -163,7 +163,7 @@ const CityOption = ({ name, id, url, region, onCitySelect }) => {
 
   return (
     <div
-      className={`autocomplete-items flex-column ${isHovering ? "hover" : ""}`}
+      className={`autocomplete-items ${isHovering ? "hover" : ""}`}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
       onClick={() => onCitySelect(name, url)}
